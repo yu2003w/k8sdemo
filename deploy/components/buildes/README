@@ -1,0 +1,2 @@
+# build es inside container
+docker run --rm -it -v /mnt/data/estack/:/opt/estack/ -v /mnt/data/logs/:/opt/build/logs/ -v ~/.m2/:/root/.m2 -v ~/.ant/:/root/.ant -v ~/.ivy2/:/root/.ivy2/ -v ~/.gradle/:/root/.gradle/ -v ~/.gradlew:/root/.gradlew buildes:0.1

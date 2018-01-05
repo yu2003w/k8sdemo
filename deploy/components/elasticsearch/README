@@ -1,0 +1,7 @@
+# Added by Jared on March 29, 2018.
+
+It seemed that image provided by elasticsearch had issue about log dir.
+
+path.log doesn't take effect. Only /usr/share/elasticsearch/logs/ could be used for storing logs and mounted external volume.
+
+Noted: serviceName specified in statefulset should be the same as service name. 

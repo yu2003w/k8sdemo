@@ -1,0 +1,7 @@
+domain: guestbook.io
+repo: github.com/yu2003w/k8sdemo
+resources:
+- group: webapp
+  kind: Guestbook
+  version: v1
+version: "2"

@@ -1,0 +1,51 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: etcd
+  labels:
+    app: etcd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd
+  template:
+    metadata:
+      labels:
+        app: etcd
+    spec:
+      containers:
+      - name: etcd
+        image: quay.io/coreos/etcd:v3.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 2379
+          protocol: TCP
+        - containerPort: 2380
+          protocol: TCP
+        #volumeMounts:
+        #  - mountPath: "/mnt/data/confm/"
+        #    name: data
+      nodeSelector:
+        zone: east
+      #volumes:
+      #  - name: data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: etcd
+  name: etcd
+spec:
+  selector:
+    app: etcd
+  ports:
+  - name: client
+    port: 2379
+  type: NodePort
+  #externalIPs:
+  #  - 10.1.241.56
+  #  - 10.1.241.54
+
